@@ -25,3 +25,4 @@ Build/** filter=lfs diff=lfs merge=lfs -text
 Plugins/** filter=lfs diff=lfs merge=lfs -text
 #Other
 Content/AutomotiveMaterials/Materials/Interior/Leather/Textures/T_Leather_06_N.uasset filter=lfs diff=lfs merge=lfs -text
+Content/FBX2/Yacht01/Yacht_V2_FBX.uasset filter=lfs diff=lfs merge=lfs -text
