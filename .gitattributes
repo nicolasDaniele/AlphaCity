@@ -28,3 +28,4 @@ Content/AutomotiveMaterials/Materials/Interior/Leather/Textures/T_Leather_06_N.u
 Content/FBX2/Yacht01/Yacht_V2_FBX.uasset filter=lfs diff=lfs merge=lfs -text
 Content/Modular_Sci_Fi/Textures/T_Leather_Brown_normal.uasset filter=lfs diff=lfs merge=lfs -text
 Content/Modular_Sci_Fi/Textures/T_Metall_Gray_02_normal.uasset filter=lfs diff=lfs merge=lfs -text
+Content/UltraDynamicSky/Textures/Sky/Real_Stars.uasset filter=lfs diff=lfs merge=lfs -text
