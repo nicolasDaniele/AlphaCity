@@ -1,0 +1,26 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+# UE file types
+# *.uasset filter=lfs diff=lfs merge=lfs -text ##Enable this if needed##
+*.umap filter=lfs diff=lfs merge=lfs -text
+*.udk filter=lfs diff=lfs merge=lfs -text
+*.upk filter=lfs diff=lfs merge=lfs -text
+# Document formats:
+*.pdf filter=lfs diff=lfs merge=lfs -text
+*.docx filter=lfs diff=lfs merge=lfs -text
+*.xlsx filter=lfs diff=lfs merge=lfs -text
+# Built data for maps
+*_BuiltData.uasset filter=lfs diff=lfs merge=lfs -text
+# Art folder
+Content/Art/** filter=lfs diff=lfs merge=lfs -text
+Content/Test/Art/** filter=lfs diff=lfs merge=lfs -text
+# Others
+*.zip filter=lfs diff=lfs merge=lfs -text
+*.pdb filter=lfs diff=lfs merge=lfs -text
+*.exe filter=lfs diff=lfs merge=lfs -text
+Content/ThirdParties/** filter=lfs diff=lfs merge=lfs -text
+#Movie
+Content/Movies/** filter=lfs diff=lfs merge=lfs -text
+Build/** filter=lfs diff=lfs merge=lfs -text
+Plugins/** filter=lfs diff=lfs merge=lfs -text
+#Other
