@@ -83,7 +83,7 @@ void UOnlineSessionsSubsystem::OnCreateGameSessionComplete(FName SessionName, bo
 		sessionInterface->ClearOnCreateSessionCompleteDelegate_Handle(CreateSessionCompleteDelegateHandle);
 	}
 
-	//GetWorld()->ServerTravel("/Game/MAPS/AlphaLoungeBeach-02?listen");
+	GetWorld()->ServerTravel("/Game/MAPS/AlphaLoungeBeach-02?listen");
 	//UGameplayStatics::OpenLevel(GetWorld(), "127.0.0.1:7777");
 	//GetWorld()->ServerTravel("/Game/MAPS/TestMap_1?listen"); // For easier testing
 }
