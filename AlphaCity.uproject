@@ -1,6 +1,6 @@
 {
 	"FileVersion": 3,
-	"EngineAssociation": "{D275F6CF-4531-B59A-5AAD-6B9D6AAC5E94}",
+	"EngineAssociation": "{ECE4CF8A-443D-C67A-CC08-C1A1A9F2524C}",
 	"Category": "",
 	"Description": "",
 	"Modules": [
@@ -41,6 +41,10 @@
 		},
 		{
 			"Name": "WebBrowserWidget",
+			"Enabled": true
+		},
+		{
+			"Name": "PixelStreaming",
 			"Enabled": true
 		}
 	]

@@ -3,20 +3,24 @@
 #include "JsonUtilities.h"
 #include "Kismet/GameplayStatics.h"
 
-#include "AlphaPlayerController.h"
-
 UOfflineMainMenuWidget::UOfflineMainMenuWidget(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer)
 {
 	Http = &FHttpModule::Get();
 
-	ApiGatewayEndpoint = FString::Printf(TEXT("https://n1zq64cubj.execute-api.sa-east-1.amazonaws.com/test"));
+	ApiGatewayEndpoint = FString::Printf(TEXT("https://yj0rvy21b5.execute-api.us-east-1.amazonaws.com/Test"));
 	LoginURI = FString::Printf(TEXT("/login"));
+	SignUpURI = FString::Printf(TEXT("/signup"));
 	StartSessionURI = FString::Printf(TEXT("/startsession"));
 }
 
 void UOfflineMainMenuWidget::OnLoginClicked()
 {
 	LoginRequest(username, password);
+}
+
+void UOfflineMainMenuWidget::OnSignUpClicked()
+{
+	SignUpRequest(newUsername, newPassword, newEmail);
 }
 
 void UOfflineMainMenuWidget::LoginRequest(FString user, FString pass)
@@ -58,6 +62,26 @@ void UOfflineMainMenuWidget::OnLoginResponse(FHttpRequestPtr request, FHttpRespo
 
 	FString idToken = JsonObject->GetObjectField("tokens")->GetStringField("idToken");
 	StartSessionRequest(idToken);
+}
+
+void UOfflineMainMenuWidget::SignUpRequest(FString user, FString pass, FString email)
+{
+	TSharedPtr<FJsonObject> JsonObject = MakeShareable(new FJsonObject());
+	JsonObject->SetStringField(TEXT("username"), *FString::Printf(TEXT("%s"), *user));
+	JsonObject->SetStringField(TEXT("password"), *FString::Printf(TEXT("%s"), *pass));
+	JsonObject->SetStringField(TEXT("email"), *FString::Printf(TEXT("%s"), *email));
+
+	FString JsonBody;
+	TSharedRef<TJsonWriter<TCHAR>> Writer = TJsonWriterFactory<>::Create(&JsonBody);
+
+	FJsonSerializer::Serialize(JsonObject.ToSharedRef(), Writer);
+
+	TSharedRef<IHttpRequest, ESPMode::ThreadSafe> LoginHttpRequest = Http->CreateRequest();
+	LoginHttpRequest->SetVerb("POST");
+	LoginHttpRequest->SetURL(ApiGatewayEndpoint + SignUpURI);
+	LoginHttpRequest->SetHeader("Content-Type", "application/json");
+	LoginHttpRequest->SetContentAsString(JsonBody);
+	LoginHttpRequest->ProcessRequest();
 }
 
 void UOfflineMainMenuWidget::StartSessionRequest(FString idToken)
